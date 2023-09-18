@@ -1,0 +1,48 @@
+<?php 
+  // section slogan 
+  
+   global $allowedposttags,$alchem_home_animation;
+   $section_hide    = absint(alchem_option('section_10_hide',0));
+   $content_model   = absint(alchem_option('section_10_model',0));
+   $section_id      = esc_attr(sanitize_title(alchem_option('section_10_id')));
+   $section_color   = esc_attr(alchem_option('section_10_color'));
+   $section_title   = wp_kses(alchem_option('section_10_title'), $allowedposttags);
+   $section_content = wp_kses(alchem_option('section_10_content'), $allowedposttags);
+   $button_text     = esc_attr(alchem_option('section_10_button_text'));
+   $button_link     = esc_attr(alchem_option('section_10_button_link'));
+   $button_target   = esc_attr(alchem_option('section_10_button_target'),'_blank');
+   $section_content = str_replace('\\\'','\'',$section_content);
+   $section_content = str_replace('\\"','"',$section_content);
+   
+   $section_class = 'section magee-section alchem-home-section-10 alchem-home-style-5';
+   if( alchem_option('section_10_parallax') == '1' )
+   $section_class .= ' parallax-scrolling';
+ ?> 
+ <?php if( $section_hide != '1' ):?> 
+ <section class="<?php echo $section_class;?>" id="<?php echo $section_id;?>">
+  <div class="section-content" style="color:<?php echo $section_color;?>;">
+  <div class="container alchem_section_10_model">
+  <?php if( $content_model == 0 ):?>
+   <div class="<?php echo $alchem_home_animation;?>" data-animationduration="1.2" data-animationtype="fadeInDown" data-imageanimation="no"> 
+  <?php if( $section_title != '' ):?>
+  <div class=" row">
+    <div class=" col-md-4_5">
+      <h1 class="magee-heading"><span class="heading-inner alchem_section_10_title" style="font-size: 62px;"> <span style="font-family: 'Playfair Display'; font-size: 24px; color: #333333;"><?php echo $section_title;?></span></span></h1>
+    </div> 
+   <?php endif;?>
+   <div class=" col-md-1_5">
+      <div style="height: 50px;"></div>
+      <div style="text-align:left;" class="alchem_section_10_button_text"> 
+      <?php if( $button_text!='' ):?>
+        <a href="<?php echo $button_link;?>" target="<?php echo $button_target;?>" style="" class=" magee-btn-normal btn-rounded btn-md"><?php echo $button_text;?></a>
+         <?php endif;?>
+        </div>
+    </div>
+  </div>
+    <?php else:?>
+ <?php echo do_shortcode($section_content);?>
+ <?php endif;?>
+  </div>
+  </div>
+</section>
+<?php endif;?>

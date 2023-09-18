@@ -1,0 +1,23 @@
+.contact-info .column-id ,
+.contact-info .column-delete {
+    width: 5%;
+}
+
+.contact-info .column-sent {
+    width: 10%;
+    text-align: right;
+}
+
+.contact-info .column-name,
+.contact-info .column-time,
+.contact-info .column-email {
+    width: 15%;
+}
+
+.contact-info .column-subject {
+    width: 15%;
+}
+
+.contact-info .column-content {
+    white-space: pre
+}
